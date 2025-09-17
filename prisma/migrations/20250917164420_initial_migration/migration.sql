@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Character" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "firstname" TEXT NOT NULL,
+    "lastname" TEXT NOT NULL,
+    "Title" TEXT NOT NULL,
+    "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
