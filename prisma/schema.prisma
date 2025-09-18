@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // suppression du chemin personnalisé
 }
 
 datasource db {
@@ -12,9 +12,8 @@ datasource db {
 }
 
 model Character {
-  id Int @id @default(autoincrement())
-  firstname String
-  lastname String
-  Title String
-  CreatedAt DateTime @default(now())
+  id         Int      @id @default(autoincrement())
+  name       String
+  Title      String
+  CreatedAt  DateTime @default(now())
 }

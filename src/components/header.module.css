@@ -1,0 +1,68 @@
+.fantasyNavbar {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #1a1a1a, #0f0f0f);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #5a3e2b;
+  box-shadow: 0 0 10px #000;
+  font-family: var(--font-cinzel), serif;
+}
+
+.navbarBrand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarTitle {
+  font-size: 1.8rem;
+  color: #d6c3a5;
+  text-shadow: 2px 2px 4px #000;
+  letter-spacing: 1px;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #d6c3a5;
+  cursor: pointer;
+}
+
+.navbarLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.fantasyLink {
+  color: #d6c3a5;
+  border: 1px solid #5a3e2b;
+  background-color: rgba(50, 50, 50, 0.2);
+  transition: all 0.3s ease;
+}
+
+.fantasyLink:hover {
+  background-color: #5a3e2b;
+  color: #fffbe6;
+  box-shadow: 0 0 10px #5a3e2b;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menuToggle {
+    display: block;
+  }
+
+  .navbarLinks {
+    flex-direction: column;
+    gap: 0.5rem;
+    display: none;
+  }
+
+  .navbarLinks.open {
+    display: flex;
+  }
+}

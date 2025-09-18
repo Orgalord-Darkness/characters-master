@@ -1,4 +1,8 @@
 import {NextResponse, NextRequest} from "next/server";
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
 
 export async function GET(){
     return NextResponse.json({
@@ -8,13 +12,22 @@ export async function GET(){
 }
 
 export async function POST(request: NextRequest){
-    const formData = await request.formData(); 
-    const data = {
-        character: formData.get("character"),
-        title: formData.get('title'),
-    }
+
+    const json = await request.json();
+
+    console.log("Reçu",json);
+
+    await new Promise((r) => setTimeout(r,1000));
+
+    const newCharacter = await prisma.character.create({
+        data : {
+            name: json.character, 
+            Title: json.title, 
+        },
+    });
 
     return NextResponse.json({
-        json: data , 
+        character: newCharacter , 
     });
 }
+

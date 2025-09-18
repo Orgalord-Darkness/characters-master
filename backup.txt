@@ -1,0 +1,47 @@
+import Form from "next/form";
+import {Input} from "@/src/components/ui/input";
+import {Label} from "@/src/components/ui/label";
+import {Button} from "@/src/components/ui/button";
+import {Card,CardHeader,CardTitle,CardContent} from "@/src/components/ui/card";
+
+export default function Page(){
+    const createCharacter = async (FormData: FormData) => {
+        const result = await fetch('/api/characters', {
+            body: JSON.stringify({
+                character: FormData.get("character"),
+                title: FormData.get("title"),
+            }),
+            method: "POST"
+        })
+        const json = await result.json();
+
+        console.log(json);
+    };
+
+    return(
+        <Card>
+            <CardHeader>
+                <CardTitle>Add a character</CardTitle>
+            </CardHeader>
+            <CardContent >
+                <form action={async (formData) => {await createCharacter(formData);}} 
+                method="POST" className="flex flex-col gap-2">
+                    <Label>Character 
+                        <Input name="character"/>
+                    </Label>
+                    <Label>Title
+                        <Input name="title"/>
+                    </Label>
+                    <Button type="submit">Submit</Button>
+                    
+                </form>
+            </CardContent>
+        </Card>
+    )
+}
+
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+npx prisma studio
